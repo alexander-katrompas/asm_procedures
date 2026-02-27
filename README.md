@@ -34,6 +34,7 @@ Install (typical on Ubuntu x86_64):
 ```bash
 sudo apt update
 sudo apt install -y gcc-aarch64-linux-gnu qemu-user libc6-arm64-cross
+```
 
 Build and run the leaf demo ARM64 Ubuntu (native):
 ```bash
