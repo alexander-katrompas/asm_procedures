@@ -34,3 +34,32 @@ Install (typical on Ubuntu x86_64):
 ```bash
 sudo apt update
 sudo apt install -y gcc-aarch64-linux-gnu qemu-user libc6-arm64-cross
+
+Build and run the leaf demo ARM64 Ubuntu (native):
+```bash
+gcc -no-pie -O0 -g leaf_call_demo.S -o leaf_demo
+./leaf_demo
+
+Build and run the non-leaf demo ARM64 Ubuntu (native):
+```bash
+gcc -no-pie -O0 -g nonleaf_call_demo.S -o nonleaf_demo
+./nonleaf_demo
+
+Build and run the leaf demo cross-compile + run under QEMU:
+```bash
+aarch64-linux-gnu-gcc -no-pie -O0 -g leaf_call_demo.S -o leaf_demo
+qemu-aarch64 -L /usr/aarch64-linux-gnu ./leaf_demo
+
+Build and run the non-leaf demo cross-compile + run under QEMU:
+```bash
+aarch64-linux-gnu-gcc -no-pie -O0 -g nonleaf_call_demo.S -o nonleaf_demo
+qemu-aarch64 -L /usr/aarch64-linux-gnu ./nonleaf_demo
+
+Expected output leaf demo:
+```bash
+add3(7,5,9) = 21
+
+Expected output non-leaf demo:
+```bash
+2*add3(7,5,9) = 42
+
